@@ -45,7 +45,7 @@ const education: Education[] = [
   {
     school: "Texas Woman's University",
     degree: "Bachelor of Business Administration (B.B.A.)",
-    period: "2016 - 2020",
+    period: "August 2011 - May 2015",
     description: "Enactus Member"
   },
   {
