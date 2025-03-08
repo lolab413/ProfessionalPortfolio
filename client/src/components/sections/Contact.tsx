@@ -63,12 +63,13 @@ export function Contact() {
               </Card>
               {/* Avatoon image positioned to appear leaning on the card */}
               <motion.img
-                src="/avatoon.png"
+                src="/1741440340264-removebg-preview.png"
                 alt="Avatoon"
-                className="absolute -bottom-20 -right-20 w-64 h-auto z-0 hidden md:block"
+                className="absolute -bottom-20 -right-20 w-64 h-auto z-0 hidden md:block pointer-events-none select-none"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+                style={{ maxWidth: "none" }}
               />
             </div>
           </div>
