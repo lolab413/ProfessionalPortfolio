@@ -104,12 +104,23 @@ export function Resume() {
             recycle={false}
             numberOfPieces={200}
             gravity={0.3}
+            initialVelocityY={-10}
+            initialVelocityX={5}
+            spread={360}
             confettiSource={{
               x: dimensions.width / 2,
-              y: 0,
+              y: dimensions.height / 2,
               w: 0,
               h: 0
             }}
+            colors={[
+              '#ff69b4', // pink
+              '#4b0082', // indigo
+              '#9370db', // medium purple
+              '#ba55d3', // medium orchid
+              '#ff1493', // deep pink
+              '#dda0dd', // plum
+            ]}
           />
         </div>
       )}
@@ -127,8 +138,8 @@ export function Resume() {
         >
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Resume</h2>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={handleDownload}
               className="hover:scale-105 transition-transform"
             >
