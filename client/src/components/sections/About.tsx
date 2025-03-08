@@ -1,56 +1,94 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 
-const skills: Record<string, string[]> = {
-  "Frontend": ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-  "Backend": ["Node.js", "Express", "PostgreSQL", "REST APIs"],
-  "Tools": ["Git", "Docker", "AWS", "CI/CD"]
+const skills: Record<string, { name: string; level: number }[]> = {
+  "Game Development": [
+    { name: "Unity", level: 5 },
+    { name: "Game Design", level: 5 },
+    { name: "C#", level: 4 },
+    { name: "3D Modeling", level: 3 }
+  ],
+  "Web Development": [
+    { name: "React", level: 5 },
+    { name: "TypeScript", level: 4 },
+    { name: "Node.js", level: 4 },
+    { name: "CSS/SCSS", level: 4 }
+  ],
+  "Education": [
+    { name: "Instructional Design", level: 5 },
+    { name: "Curriculum Development", level: 5 },
+    { name: "E-Learning", level: 4 },
+    { name: "Workshop Facilitation", level: 4 }
+  ]
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
 };
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-muted/50">
+    <section id="about" className="py-20 bg-gradient-to-b from-purple-50 to-white">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
+          variants={container}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Who I Am</h3>
-              <p className="text-muted-foreground">
-                I'm a passionate full-stack developer with a focus on creating 
-                intuitive and performant web applications. With [X] years of 
-                experience, I've worked on various projects ranging from small 
-                business websites to large-scale enterprise applications.
+          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-primary via-purple-500 to-pink-500 text-transparent bg-clip-text">
+            About Me
+          </h2>
+
+          <motion.div variants={item} className="mb-12">
+            <Card className="p-6 bg-white/50 backdrop-blur-sm border-primary/10">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I blend the worlds of game development, web technology, and education to create engaging learning experiences. With expertise in both technical development and instructional design, I bridge the gap between complex concepts and accessible learning.
               </p>
             </Card>
+          </motion.div>
 
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Skills</h3>
-              <div className="space-y-4">
-                {Object.entries(skills).map(([category, items]) => (
-                  <div key={category}>
-                    <h4 className="font-medium mb-2">{category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {items.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-3 py-1 bg-primary/10 rounded-full text-sm"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {Object.entries(skills).map(([category, items]) => (
+              <motion.div key={category} variants={item}>
+                <Card className="p-6 h-full bg-white/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
+                  <h3 className="text-xl font-semibold mb-4 text-primary">{category}</h3>
+                  <div className="space-y-4">
+                    {items.map((skill) => (
+                      <div key={skill.name} className="space-y-1">
+                        <div className="flex justify-between text-sm">
+                          <span>{skill.name}</span>
+                          <span className="text-primary">
+                            {"★".repeat(skill.level)}
+                            {"☆".repeat(5 - skill.level)}
+                          </span>
+                        </div>
+                        <div className="h-1.5 bg-primary/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${(skill.level / 5) * 100}%` }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                            className="h-full bg-gradient-to-r from-primary to-purple-500"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </Card>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
