@@ -11,7 +11,7 @@ const projects: Project[] = [
     description: "Built with Ruby on Rails, Liquid, HTML, and SCSS, featuring a redesigned UI, wishlist functionality, and a floating cart that boosted sales and retention by over 40%.",
     imageUrl: "/Images/lovehandle-homepage.png",
     tags: ["Ruby on Rails", "Liquid", "SCSS"],
-    link: "https://example.com"
+    link: "https://www.lovehandle.com/"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const projects: Project[] = [
     description: " Unity curriculum built for iCode, featuring hands-on projects and interactive lessons to teach game design, C# scripting, and development fundamentals",
     imageUrl: "/Images/Unity.png",
     tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
-    link: "https://example.com"
+    link: "https://media.journoportfolio.com/users/42831/uploads/14bef6b8-df11-41d3-a214-5cea6e4d6ffc.pdf"
   },
   // Add more projects as needed
   {
@@ -27,8 +27,8 @@ const projects: Project[] = [
     title: "Exploration Code E-Learning Platform",
     description: " An interactive e-learning platform designed to teach coding and game development through hands-on projects, engaging lessons, and a structured curriculum for learners of all levels.",
     imageUrl: "/Images/ExCode.png",
-    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
-    link: "https://example.com"
+    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning", "In development"],
+    link: "https://explorationcode.org/"
   },
 ];
 
