@@ -9,7 +9,7 @@ export function ThemeToggle() {
     // Check if user has a theme preference in localStorage
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
+
     setIsDark(savedTheme === "dark" || (!savedTheme && prefersDark));
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
@@ -26,13 +26,10 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 rounded-full bg-background/80 backdrop-blur-sm border border-primary/10 hover:bg-primary/5"
+      className="fixed top-4 right-4 z-50 rounded-full bg-background/80 backdrop-blur-sm border border-primary/10 hover:bg-primary/5 dark:bg-primary/20 dark:hover:bg-primary/30"
     >
-      {isDark ? (
-        <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      ) : (
-        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      )}
+      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:rotate-90 dark:scale-0 dark:text-primary-foreground" />
+      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 dark:text-primary-foreground" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
