@@ -15,7 +15,6 @@ const experiences: Experience[] = [
       "Mentored junior developers and conducted code reviews"
     ]
   },
-  // Add more experiences
 ];
 
 const education: Education[] = [
@@ -25,10 +24,18 @@ const education: Education[] = [
     period: "2016 - 2020",
     description: "Graduated with honors, specialized in Software Engineering"
   },
-  // Add more education
 ];
 
 export function Resume() {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="resume" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -41,7 +48,7 @@ export function Resume() {
         >
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Resume</h2>
-            <Button variant="outline">
+            <Button variant="outline" onClick={handleDownload}>
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </Button>
