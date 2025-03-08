@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useState } from "react";
+import ReactConfetti from "react-confetti";
+import { AchievementBadge } from "@/components/gamification/AchievementBadge";
 import type { Experience, Education } from "@/lib/types";
 
 const experiences: Experience[] = [
@@ -54,6 +57,9 @@ const education: Education[] = [
 ];
 
 export function Resume() {
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showAchievement, setShowAchievement] = useState(false);
+
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/resume.pdf';
@@ -61,10 +67,37 @@ export function Resume() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // Trigger confetti and achievement
+    setShowConfetti(true);
+    setShowAchievement(true);
+
+    // Remove confetti after 5 seconds
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000);
+
+    // Hide achievement after 6 seconds
+    setTimeout(() => {
+      setShowAchievement(false);
+    }, 6000);
   };
 
   return (
     <section id="resume" className="py-20 bg-muted/50">
+      {showConfetti && (
+        <ReactConfetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          recycle={false}
+          numberOfPieces={500}
+          gravity={0.2}
+        />
+      )}
+      <AchievementBadge
+        title="Resume Master - Portfolio Downloaded!"
+        isVisible={showAchievement}
+      />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,7 +108,11 @@ export function Resume() {
         >
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Resume</h2>
-            <Button variant="outline" onClick={handleDownload}>
+            <Button 
+              variant="outline" 
+              onClick={handleDownload}
+              className="hover:scale-105 transition-transform"
+            >
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </Button>
