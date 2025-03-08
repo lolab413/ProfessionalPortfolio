@@ -39,7 +39,7 @@ const item = {
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-purple-50 to-white">
+    <section id="about" className="py-20 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -53,8 +53,8 @@ export function About() {
           </h2>
 
           <motion.div variants={item} className="mb-12">
-            <Card className="p-6 bg-white/50 backdrop-blur-sm border-primary/10">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+            <Card className="p-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10">
+              <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
                 As a Game Design Instructor and Curriculum Developer based in Dallas, Texas, I blend technical expertise with educational innovation. I specialize in teaching full-stack web development, game development, and data science, while creating engaging curriculum that bridges complex concepts with accessible learning experiences.
               </p>
             </Card>
@@ -63,7 +63,7 @@ export function About() {
           <div className="grid md:grid-cols-3 gap-6">
             {Object.entries(skills).map(([category, items]) => (
               <motion.div key={category} variants={item}>
-                <Card className="p-6 h-full bg-white/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
+                <Card className="p-6 h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
                   <h3 className="text-xl font-semibold mb-4 text-primary">{category}</h3>
                   <div className="space-y-4">
                     {items.map((skill) => (
@@ -74,7 +74,7 @@ export function About() {
                         whileTap={{ scale: 0.98 }}
                       >
                         <div className="flex justify-between text-sm">
-                          <span>{skill.name}</span>
+                          <span className="text-gray-800 dark:text-gray-200">{skill.name}</span>
                           <motion.span 
                             className="text-primary"
                             whileHover={{
