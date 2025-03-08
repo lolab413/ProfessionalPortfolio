@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Avatoon } from "@/components/Avatoon";
 
 export function Contact() {
   return (
@@ -61,16 +62,7 @@ export function Contact() {
                   </form>
                 </CardContent>
               </Card>
-              {/* Avatoon image positioned to appear leaning on the card */}
-              <motion.img
-                src="/1741440340264-removebg-preview.png"
-                alt="Avatoon"
-                className="absolute -bottom-20 -right-20 w-64 h-auto z-0 hidden md:block pointer-events-none select-none"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                style={{ maxWidth: "none" }}
-              />
+              <Avatoon />
             </div>
           </div>
         </motion.div>
