@@ -6,31 +6,58 @@ import type { Experience, Education } from "@/lib/types";
 
 const experiences: Experience[] = [
   {
-    company: "Tech Corp",
-    position: "Senior Full Stack Developer",
-    period: "2020 - Present",
+    company: "Game-U",
+    position: "Data Science & Game Design Instructor / Curriculum Developer",
+    period: "March 2022 - Present",
     description: [
-      "Led development of microservices architecture",
-      "Implemented CI/CD pipeline reducing deployment time by 50%",
-      "Mentored junior developers and conducted code reviews"
+      "Instruct students in full-stack web development, game development, and data science",
+      "Teach JavaScript, Lua, C#, React, Vue, Flutter, Python, and SQL",
+      "Develop interactive labs covering databases, OOP, and algorithms",
+      "Guide students in front-end and back-end development with Node.js and Express"
     ]
   },
+  {
+    company: "Freedom Learning Group/Coursera",
+    position: "Instructional Content Author / Instructional Designer",
+    period: "June 2023 - Sept. 2024",
+    description: [
+      "Created interactive learning modules for data science, AI, and machine learning",
+      "Designed hands-on programming exercises in Python and SQL",
+      "Developed technical tutorials using Articulate 360 and Adobe Creative Suite"
+    ]
+  },
+  {
+    company: "iCode",
+    position: "Technical Lead Instructor / CS Instructional Designer",
+    period: "June 2020 - Sept 2022",
+    description: [
+      "Led instruction in Python, JavaScript, SQL, and database management",
+      "Designed curricula covering data structures, algorithms, and debugging",
+      "Developed project-based learning experiences for full-stack applications"
+    ]
+  }
 ];
 
 const education: Education[] = [
   {
-    school: "University of Technology",
-    degree: "Bachelor of Computer Science",
+    school: "Texas Woman's University",
+    degree: "Bachelor of Business Administration (B.B.A.)",
     period: "2016 - 2020",
-    description: "Graduated with honors, specialized in Software Engineering"
+    description: "Enactus Member"
   },
+  {
+    school: "Brookhaven College",
+    degree: "Certificate in Computer Programming",
+    period: "Post-Graduate",
+    description: "Advanced programming and software development studies"
+  }
 ];
 
 export function Resume() {
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/resume.pdf';
-    link.download = 'Resume.pdf';
+    link.download = 'Lola_Babatunde_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

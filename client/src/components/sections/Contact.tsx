@@ -26,15 +26,15 @@ export function Contact() {
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>email@example.com</span>
+                  <span>lolababatunde413@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>(214) 300-5515</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-primary" />
-                  <span>San Francisco, CA</span>
+                  <span>Dallas, Texas 75214</span>
                 </div>
               </CardContent>
             </Card>

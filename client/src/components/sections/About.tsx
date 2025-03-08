@@ -3,22 +3,22 @@ import { Card } from "@/components/ui/card";
 
 const skills: Record<string, { name: string; level: number }[]> = {
   "Game Development": [
-    { name: "Unity", level: 5 },
+    { name: "Unity", level: 4 },
     { name: "Game Design", level: 5 },
     { name: "C#", level: 4 },
-    { name: "3D Modeling", level: 3 }
+    { name: "Python", level: 4 }
   ],
   "Web Development": [
-    { name: "React", level: 5 },
-    { name: "TypeScript", level: 4 },
+    { name: "JavaScript", level: 5 },
+    { name: "React", level: 4 },
     { name: "Node.js", level: 4 },
-    { name: "CSS/SCSS", level: 4 }
+    { name: "SQL", level: 4 }
   ],
   "Education": [
     { name: "Instructional Design", level: 5 },
     { name: "Curriculum Development", level: 5 },
     { name: "E-Learning", level: 4 },
-    { name: "Workshop Facilitation", level: 4 }
+    { name: "Technical Training", level: 5 }
   ]
 };
 
@@ -55,7 +55,7 @@ export function About() {
           <motion.div variants={item} className="mb-12">
             <Card className="p-6 bg-white/50 backdrop-blur-sm border-primary/10">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I blend the worlds of game development, web technology, and education to create engaging learning experiences. With expertise in both technical development and instructional design, I bridge the gap between complex concepts and accessible learning.
+                As a Game Design Instructor and Curriculum Developer based in Dallas, Texas, I blend technical expertise with educational innovation. I specialize in teaching full-stack web development, game development, and data science, while creating engaging curriculum that bridges complex concepts with accessible learning experiences.
               </p>
             </Card>
           </motion.div>
