@@ -38,6 +38,11 @@ const item = {
 };
 
 export function About() {
+  const preventSave = (e: React.MouseEvent) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-background">
       <div className="container mx-auto px-4">
@@ -55,14 +60,24 @@ export function About() {
           <motion.div variants={item} className="mb-12">
             <Card className="p-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <motion.img
-                  src="/Images/profile.jpg"
-                  alt="Lola Babatunde"
-                  className="w-28 h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
+                <div className="relative">
+                  <motion.img
+                    src="/Images/profile.jpg"
+                    alt="Lola Babatunde"
+                    className="w-28 h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg select-none pointer-events-none"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    onContextMenu={preventSave}
+                    draggable="false"
+                    style={{
+                      WebkitUserSelect: 'none',
+                      WebkitTouchCallout: 'none',
+                    }}
+                  />
+                  {/* Semi-transparent overlay */}
+                  <div className="absolute inset-0 bg-transparent pointer-events-none" />
+                </div>
                 <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center md:text-left">
                   As a Game Design Instructor and Curriculum Developer based in Dallas, Texas, I blend technical expertise with educational innovation. I specialize in teaching full-stack web development, game development, and data science, while creating engaging curriculum that bridges complex concepts with accessible learning experiences.
                 </p>
