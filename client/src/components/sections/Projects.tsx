@@ -9,7 +9,7 @@ const projects: Project[] = [
     id: 1,
     title: "E-commerce Platform",
     description: "A full-stack e-commerce platform built with React and Node.js",
-    imageUrl: "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8",
+    imageUrl: "/Images/lovehandle-homepage.png",
     tags: ["React", "Node.js", "PostgreSQL"],
     link: "https://example.com"
   },
@@ -35,7 +35,7 @@ export function Projects() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => (
               <motion.div
