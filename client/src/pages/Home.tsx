@@ -8,7 +8,7 @@ import { Contact } from "@/components/sections/Contact";
 import { motion } from "framer-motion";
 import { AchievementBadge } from "@/components/gamification/AchievementBadge";
 import { ProgressBar } from "@/components/gamification/ProgressBar";
-import { CollectibleStar } from "@/components/gamification/CollectibleStar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(true);
@@ -64,6 +64,7 @@ export default function Home() {
     <SidebarContext.Provider value={{ isOpen, setIsOpen }}>
       <div className="flex min-h-screen bg-background">
         <Sidebar />
+        <ThemeToggle />
         <ProgressBar />
         <motion.main
           layout
@@ -74,19 +75,15 @@ export default function Home() {
         >
           <Hero />
           <section id="about">
-            <CollectibleStar sectionId="about" />
             <About />
           </section>
           <section id="projects">
-            <CollectibleStar sectionId="projects" />
             <Projects />
           </section>
           <section id="resume">
-            <CollectibleStar sectionId="resume" />
             <Resume />
           </section>
           <section id="contact">
-            <CollectibleStar sectionId="contact" />
             <Contact />
           </section>
         </motion.main>
