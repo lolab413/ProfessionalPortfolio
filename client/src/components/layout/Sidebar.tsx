@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { FiHome, FiUser, FiBriefcase, FiFileText, FiMail, FiChevronsRight } from "react-icons/fi";
+
+export const SidebarContext = createContext<{
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}>({ isOpen: true, setIsOpen: () => {} });
+
+export const useSidebar = () => useContext(SidebarContext);
 
 const navItems = [
   { href: "/", icon: FiHome, label: "Home" },
@@ -13,30 +19,30 @@ const navItems = [
 ];
 
 export function Sidebar() {
-  const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Home");
+  const { isOpen, setIsOpen } = useSidebar();
 
   return (
     <motion.nav
       layout
       className="fixed left-0 top-0 z-50 h-screen shrink-0 border-r border-primary/10 bg-background/80 backdrop-blur-sm p-2"
       style={{
-        width: open ? "225px" : "fit-content",
+        width: isOpen ? "225px" : "fit-content",
       }}
     >
       <div className="flex items-center justify-between mb-4 p-2">
         <motion.div layout className="grid h-10 w-10 place-content-center rounded-md bg-primary text-primary-foreground">
-          GD
+          LB
         </motion.div>
-        {open && (
+        {isOpen && (
           <motion.div
             layout
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.125 }}
           >
-            <span className="block text-sm font-semibold">Game Design</span>
-            <span className="block text-xs text-muted-foreground">Portfolio</span>
+            <span className="block text-sm font-semibold">Lola Babatunde</span>
+            <span className="block text-xs text-muted-foreground">Game Design</span>
           </motion.div>
         )}
       </div>
@@ -56,7 +62,7 @@ export function Sidebar() {
             <motion.div layout className="grid h-full w-10 place-content-center text-lg">
               <Icon />
             </motion.div>
-            {open && (
+            {isOpen && (
               <motion.span
                 layout
                 initial={{ opacity: 0, y: 12 }}
@@ -73,14 +79,14 @@ export function Sidebar() {
 
       <motion.button
         layout
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => setIsOpen(!isOpen)}
         className="absolute bottom-4 left-0 right-0 border-t border-primary/10 transition-colors hover:bg-primary/5"
       >
         <div className="flex items-center p-2">
           <motion.div layout className="grid h-10 w-10 place-content-center text-lg">
-            <FiChevronsRight className={`transition-transform ${open && "rotate-180"}`} />
+            <FiChevronsRight className={`transition-transform ${isOpen && "rotate-180"}`} />
           </motion.div>
-          {open && (
+          {isOpen && (
             <motion.span
               layout
               initial={{ opacity: 0, y: 12 }}
