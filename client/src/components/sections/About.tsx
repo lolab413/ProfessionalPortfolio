@@ -67,13 +67,24 @@ export function About() {
                   <h3 className="text-xl font-semibold mb-4 text-primary">{category}</h3>
                   <div className="space-y-4">
                     {items.map((skill) => (
-                      <div key={skill.name} className="space-y-1">
+                      <motion.div 
+                        key={skill.name} 
+                        className="space-y-1"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
                         <div className="flex justify-between text-sm">
                           <span>{skill.name}</span>
-                          <span className="text-primary">
+                          <motion.span 
+                            className="text-primary"
+                            whileHover={{
+                              scale: 1.1,
+                              transition: { duration: 0.2 }
+                            }}
+                          >
                             {"★".repeat(skill.level)}
                             {"☆".repeat(5 - skill.level)}
-                          </span>
+                          </motion.span>
                         </div>
                         <div className="h-1.5 bg-primary/10 rounded-full overflow-hidden">
                           <motion.div
@@ -83,7 +94,7 @@ export function About() {
                             className="h-full bg-gradient-to-r from-primary to-purple-500"
                           />
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </Card>
