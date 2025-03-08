@@ -44,7 +44,7 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-background">
+    <section id="about" className="py-12 md:py-20 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -53,18 +53,18 @@ export function About() {
           variants={container}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-primary via-purple-500 to-pink-500 text-transparent bg-clip-text">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-primary via-purple-500 to-pink-500 text-transparent bg-clip-text">
             About Me
           </h2>
 
-          <motion.div variants={item} className="mb-12">
-            <Card className="p-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="relative">
+          <motion.div variants={item} className="mb-8 md:mb-12">
+            <Card className="p-4 md:p-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                <div className="relative shrink-0">
                   <motion.img
                     src="/Images/profile.jpg"
                     alt="Lola Babatunde"
-                    className="w-28 h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg select-none pointer-events-none"
+                    className="w-24 md:w-28 h-24 md:h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg select-none pointer-events-none"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
@@ -75,22 +75,21 @@ export function About() {
                       WebkitTouchCallout: 'none',
                     }}
                   />
-                  {/* Semi-transparent overlay */}
                   <div className="absolute inset-0 bg-transparent pointer-events-none" />
                 </div>
-                <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center md:text-left">
+                <p className="text-base md:text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center md:text-left">
                   As a Game Design Instructor and Curriculum Developer based in Dallas, Texas, I blend technical expertise with educational innovation. I specialize in teaching full-stack web development, game development, and data science, while creating engaging curriculum that bridges complex concepts with accessible learning experiences.
                 </p>
               </div>
             </Card>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {Object.entries(skills).map(([category, items]) => (
               <motion.div key={category} variants={item}>
-                <Card className="p-6 h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
-                  <h3 className="text-xl font-semibold mb-4 text-primary">{category}</h3>
-                  <div className="space-y-4">
+                <Card className="p-4 md:p-6 h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold mb-4 text-primary">{category}</h3>
+                  <div className="space-y-3 md:space-y-4">
                     {items.map((skill) => (
                       <motion.div
                         key={skill.name}
