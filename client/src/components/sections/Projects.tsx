@@ -7,21 +7,29 @@ import type { Project } from "@/lib/types";
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce platform built with React and Node.js",
+    title: "LoveHandle E-Commerce Website Redesign",
+    description: "Built with Ruby on Rails, Liquid, HTML, and SCSS, featuring a redesigned UI, wishlist functionality, and a floating cart that boosted sales and retention by over 40%.",
     imageUrl: "/Images/lovehandle-homepage.png",
-    tags: ["React", "Node.js", "PostgreSQL"],
+    tags: ["Ruby on Rails", "Liquid", "SCSS"],
     link: "https://example.com"
   },
   {
     id: 2,
-    title: "Project Management Tool",
-    description: "Collaborative project management application with real-time updates",
-    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-    tags: ["TypeScript", "Socket.io", "Express"],
+    title: "3D Game Development Curriculum",
+    description: " Unity curriculum built for iCode, featuring hands-on projects and interactive lessons to teach game design, C# scripting, and development fundamentals",
+    imageUrl: "/Images/Unity.png",
+    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
     link: "https://example.com"
   },
   // Add more projects as needed
+  {
+    id: 3,
+    title: "Exploration Code E-Learning Platform",
+    description: " An interactive e-learning platform designed to teach coding and game development through hands-on projects, engaging lessons, and a structured curriculum for learners of all levels.",
+    imageUrl: "/Images/ExCode.png",
+    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
+    link: "https://example.com"
+  },
 ];
 
 export function Projects() {
