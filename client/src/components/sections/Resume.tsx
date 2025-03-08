@@ -102,14 +102,14 @@ export function Resume() {
             width={dimensions.width}
             height={dimensions.height}
             recycle={false}
-            numberOfPieces={200}
+            numberOfPieces={500}
             gravity={0.3}
-            initialVelocityY={-10}
-            initialVelocityX={5}
-            spread={360}
+            initialVelocityY={-15}
+            initialVelocityX={8}
+            spread={180}
             confettiSource={{
               x: dimensions.width / 2,
-              y: dimensions.height / 2,
+              y: 0,
               w: 0,
               h: 0
             }}
@@ -121,6 +121,14 @@ export function Resume() {
               '#ff1493', // deep pink
               '#dda0dd', // plum
             ]}
+            drawShape={ctx => {
+              ctx.beginPath();
+              for(let i = 0; i < 6; i++) {
+                ctx.lineTo(10 * Math.cos(2 * Math.PI * i / 6), 10 * Math.sin(2 * Math.PI * i / 6));
+              }
+              ctx.closePath();
+              ctx.fill();
+            }}
           />
         </div>
       )}
