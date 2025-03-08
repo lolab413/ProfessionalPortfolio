@@ -54,16 +54,16 @@ export function About() {
 
           <motion.div variants={item} className="mb-12">
             <Card className="p-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-primary/10">
-              <div className="flex items-start gap-6">
+              <div className="flex flex-col md:flex-row items-center gap-8">
                 <motion.img
                   src="/Images/profile.jpg"
                   alt="Lola Babatunde"
-                  className="w-24 h-24 rounded-full object-cover border-2 border-primary/20"
+                  className="w-28 h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 />
-                <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
+                <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-200 text-center md:text-left">
                   As a Game Design Instructor and Curriculum Developer based in Dallas, Texas, I blend technical expertise with educational innovation. I specialize in teaching full-stack web development, game development, and data science, while creating engaging curriculum that bridges complex concepts with accessible learning experiences.
                 </p>
               </div>
@@ -77,15 +77,15 @@ export function About() {
                   <h3 className="text-xl font-semibold mb-4 text-primary">{category}</h3>
                   <div className="space-y-4">
                     {items.map((skill) => (
-                      <motion.div 
-                        key={skill.name} 
+                      <motion.div
+                        key={skill.name}
                         className="space-y-1"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-800 dark:text-gray-200">{skill.name}</span>
-                          <motion.span 
+                          <motion.span
                             className="text-primary"
                             whileHover={{
                               scale: 1.1,
