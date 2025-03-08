@@ -19,6 +19,23 @@ export default function Home() {
     contact: false
   });
 
+  // Auto-collapse sidebar after 2 seconds
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    if (isOpen) {
+      timeoutId = setTimeout(() => {
+        setIsOpen(false);
+      }, 2000);
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
