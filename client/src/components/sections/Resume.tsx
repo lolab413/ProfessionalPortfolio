@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ReactConfetti from "react-confetti";
 import { AchievementBadge } from "@/components/gamification/AchievementBadge";
 import type { Experience, Education } from "@/lib/types";
@@ -59,6 +59,17 @@ const education: Education[] = [
 export function Resume() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showAchievement, setShowAchievement] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      setDimensions({
+        width: sectionRef.current.offsetWidth,
+        height: sectionRef.current.offsetHeight
+      });
+    }
+  }, []);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -84,15 +95,23 @@ export function Resume() {
   };
 
   return (
-    <section id="resume" className="py-20 bg-muted/50">
+    <section id="resume" className="py-20 bg-muted/50 relative" ref={sectionRef}>
       {showConfetti && (
-        <ReactConfetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          recycle={false}
-          numberOfPieces={500}
-          gravity={0.2}
-        />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <ReactConfetti
+            width={dimensions.width}
+            height={dimensions.height}
+            recycle={false}
+            numberOfPieces={200}
+            gravity={0.3}
+            confettiSource={{
+              x: dimensions.width / 2,
+              y: 0,
+              w: 0,
+              h: 0
+            }}
+          />
+        </div>
       )}
       <AchievementBadge
         title="Resume Master - Portfolio Downloaded!"
