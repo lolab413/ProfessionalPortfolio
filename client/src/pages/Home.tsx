@@ -5,6 +5,7 @@ import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
 import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { AchievementBadge } from "@/components/gamification/AchievementBadge";
 import { ProgressBar } from "@/components/gamification/ProgressBar";
@@ -66,27 +67,30 @@ export default function Home() {
         <Sidebar />
         <ThemeToggle />
         <ProgressBar />
-        <motion.main
+        <motion.div
           layout
-          className="flex-1"
+          className="flex-1 flex flex-col"
           style={{
             marginLeft: isOpen ? "225px" : "64px",
           }}
         >
-          <Hero />
-          <section id="about">
-            <About />
-          </section>
-          <section id="projects">
-            <Projects />
-          </section>
-          <section id="resume">
-            <Resume />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-        </motion.main>
+          <main>
+            <Hero />
+            <section id="about">
+              <About />
+            </section>
+            <section id="projects">
+              <Projects />
+            </section>
+            <section id="resume">
+              <Resume />
+            </section>
+            <section id="contact">
+              <Contact />
+            </section>
+          </main>
+          <Footer />
+        </motion.div>
 
         <AchievementBadge 
           title="About Me Master"
