@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { Avatoon } from "@/components/Avatoon";
 
 export function Contact() {
@@ -28,6 +28,17 @@ export function Contact() {
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary shrink-0" />
                   <span className="text-sm md:text-base break-all">lolababatunde413@gmail.com</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Linkedin className="h-5 w-5 text-primary shrink-0" />
+                  <a 
+                    href="https://www.linkedin.com/in/lolababatunde/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm md:text-base hover:text-primary transition-colors"
+                  >
+                    linkedin.com/in/lolababatunde
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary shrink-0" />
