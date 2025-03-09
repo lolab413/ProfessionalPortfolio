@@ -21,14 +21,14 @@ const projects: Project[] = [
     tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
     link: "https://media.journoportfolio.com/users/42831/uploads/14bef6b8-df11-41d3-a214-5cea6e4d6ffc.pdf"
   },
-  // Add more projects as needed
   {
     id: 3,
     title: "Exploration Code E-Learning Platform",
     description: " An interactive e-learning platform designed to teach coding and game development through hands-on projects, engaging lessons, and a structured curriculum for learners of all levels.",
     imageUrl: "/Images/ExCode.png",
-    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning", "In development"],
-    link: "https://explorationcode.org/"
+    tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
+    link: "https://explorationcode.org/",
+    inDevelopment: true
   },
 ];
 
@@ -53,6 +53,14 @@ export function Projects() {
               >
                 <Card className="overflow-hidden h-full">
                   <div className="aspect-video relative overflow-hidden">
+                    {project.inDevelopment && (
+                      <Badge 
+                        variant="secondary" 
+                        className="absolute top-2 right-2 z-10 bg-primary/90 text-primary-foreground"
+                      >
+                        In Development
+                      </Badge>
+                    )}
                     <img
                       src={project.imageUrl}
                       alt={project.title}
