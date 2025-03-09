@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-purple-100/80 via-pink-50/80 to-blue-50/80 dark:from-purple-950/30 dark:via-pink-900/20 dark:to-blue-900/20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-purple-100/80 via-pink-50/80 to-blue-50/80 dark:from-purple-950/30 dark:via-pink-900/20 dark:to-blue-900/20">
       {/* Animated background elements */}
       <div className="absolute inset-0 w-full h-full">
         {[...Array(3)].map((_, i) => (

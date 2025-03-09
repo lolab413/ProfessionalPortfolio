@@ -1,5 +1,4 @@
 import { useState, createContext, useContext } from "react";
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { FiHome, FiUser, FiBriefcase, FiFileText, FiMail, FiChevronsRight } from "react-icons/fi";
 
@@ -11,7 +10,7 @@ export const SidebarContext = createContext<{
 export const useSidebar = () => useContext(SidebarContext);
 
 const navItems = [
-  { href: "/", icon: FiHome, label: "Home" },
+  { href: "#home", icon: FiHome, label: "Home" },
   { href: "#about", icon: FiUser, label: "About" },
   { href: "#projects", icon: FiBriefcase, label: "Projects" },
   { href: "#resume", icon: FiFileText, label: "Resume" },
@@ -21,6 +20,26 @@ const navItems = [
 export function Sidebar() {
   const [selected, setSelected] = useState("Home");
   const { isOpen, setIsOpen } = useSidebar();
+
+  const handleNavClick = (label: string, href: string) => {
+    setSelected(label);
+    const element = document.querySelector(href);
+    if (element) {
+      // Add an offset to account for the fixed header
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    // Close sidebar on mobile after navigation
+    if (window.innerWidth < 768) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <motion.nav
@@ -52,8 +71,8 @@ export function Sidebar() {
           <motion.div
             key={href}
             layout
-            onClick={() => setSelected(label)}
-            className={`relative flex h-10 w-full items-center rounded-md transition-colors ${
+            onClick={() => handleNavClick(label, href)}
+            className={`relative flex h-10 w-full items-center rounded-md transition-colors cursor-pointer ${
               selected === label
                 ? "bg-primary/10 text-primary"
                 : "text-muted-foreground hover:bg-primary/5"
