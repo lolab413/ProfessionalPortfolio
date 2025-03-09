@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-purple-100 via-pink-50 to-blue-50 dark:from-purple-950 dark:via-pink-900 dark:to-blue-900">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-purple-100/80 via-pink-50/80 to-blue-50/80 dark:from-purple-950/30 dark:via-pink-900/20 dark:to-blue-900/20">
       {/* Animated background elements */}
       <div className="absolute inset-0 w-full h-full">
         {[...Array(3)].map((_, i) => (
@@ -53,11 +53,11 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-xl md:text-2xl text-foreground mb-8 drop-shadow-sm dark:text-slate-200"
+            className="text-xl md:text-2xl text-foreground mb-8 drop-shadow-sm"
           >
             Blending Education & Technology
             <br />
-            <span className="text-muted-foreground dark:text-slate-300">
+            <span className="text-muted-foreground">
               Developer • Game Design Teacher • Instructional Designer
             </span>
           </motion.p>
@@ -70,7 +70,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="bg-primary/90 hover:bg-primary"
+              className="bg-primary/90 hover:bg-primary text-primary-foreground"
               asChild
             >
               <a href="#projects">
