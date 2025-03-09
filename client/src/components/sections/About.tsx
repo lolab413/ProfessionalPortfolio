@@ -64,7 +64,7 @@ export function About() {
                   <motion.img
                     src="/Images/profile.jpg"
                     alt="Lola Babatunde"
-                    className="w-20 md:w-28 h-20 md:h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg select-none pointer-events-none"
+                    className="w-28 md:w-28 h-28 md:h-28 rounded-full object-cover border-2 border-primary/20 shadow-lg select-none pointer-events-none"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
