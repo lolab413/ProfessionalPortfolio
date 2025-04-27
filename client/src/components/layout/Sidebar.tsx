@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from "react";
 import { motion } from "framer-motion";
-import { FiHome, FiUser, FiBriefcase, FiFileText, FiMail, FiChevronsRight } from "react-icons/fi";
+import { FiHome, FiUser, FiBriefcase, FiFileText, FiMail, FiChevronsRight, FiGithub } from "react-icons/fi";
 
 export const SidebarContext = createContext<{
   isOpen: boolean;
@@ -94,6 +94,33 @@ export function Sidebar() {
             )}
           </motion.div>
         ))}
+        
+        {/* GitHub Link */}
+        <a 
+          href="https://github.com/lolab413"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <motion.div
+            layout
+            className="relative flex h-10 w-full items-center rounded-md transition-colors cursor-pointer text-muted-foreground hover:bg-primary/5 hover:text-primary"
+          >
+            <motion.div layout className="grid h-full w-10 place-content-center text-lg">
+              <FiGithub />
+            </motion.div>
+            {isOpen && (
+              <motion.span
+                layout
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.125 }}
+                className="text-sm font-medium"
+              >
+                GitHub
+              </motion.span>
+            )}
+          </motion.div>
+        </a>
       </div>
 
       <motion.button
