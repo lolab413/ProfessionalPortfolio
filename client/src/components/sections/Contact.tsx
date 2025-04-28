@@ -3,10 +3,81 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Linkedin, Github, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, FileText, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { Avatoon } from "@/components/Avatoon";
+import { useState, FormEvent } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export function Contact() {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Reset status
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Success
+        setSubmitStatus("success");
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+          variant: "default",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+      } else {
+        // API error
+        setSubmitStatus("error");
+        toast({
+          title: "Message Not Sent",
+          description: data.message || "There was a problem sending your message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      // Network error
+      setSubmitStatus("error");
+      toast({
+        title: "Connection Error",
+        description: "Could not connect to the server. Please check your internet connection and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
@@ -27,7 +98,7 @@ export function Contact() {
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary shrink-0" />
-                  <span className="text-sm md:text-base break-all">lolababatunde413@gmail.com</span>
+                  <span className="text-sm md:text-base break-all">icodewithlola@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Linkedin className="h-5 w-5 text-primary shrink-0" />
@@ -79,28 +150,64 @@ export function Contact() {
                   <CardTitle className="text-lg md:text-xl">Send a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-4">
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                       <Input 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         placeholder="Your Name" 
                         className="w-full text-base"
+                        required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
                       <Input 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         type="email" 
                         placeholder="Your Email" 
                         className="w-full text-base"
+                        required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
                       <Textarea 
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
                         placeholder="Your Message" 
                         className="min-h-[120px] w-full text-base resize-none"
+                        required
+                        disabled={isSubmitting}
                       />
                     </div>
-                    <Button type="submit" className="w-full">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      className="w-full" 
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : submitStatus === "success" ? (
+                        <>
+                          <CheckCircle className="mr-2 h-4 w-4" />
+                          Message Sent
+                        </>
+                      ) : submitStatus === "error" ? (
+                        <>
+                          <AlertCircle className="mr-2 h-4 w-4" />
+                          Try Again
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
                     </Button>
                   </form>
                 </CardContent>
