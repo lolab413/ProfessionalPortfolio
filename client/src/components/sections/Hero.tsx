@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 
 export function Hero() {
   return (
@@ -84,6 +84,20 @@ export function Hero() {
               asChild
             >
               <a href="#contact">Get In Touch</a>
+            </Button>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="bg-secondary/80 hover:bg-secondary transition-colors"
+              asChild
+            >
+              <a 
+                href="https://lolababatunde413.journoportfolio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Writing Samples <FileText className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </motion.div>
         </motion.div>
