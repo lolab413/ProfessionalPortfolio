@@ -5,6 +5,7 @@ export interface Project {
   imageUrl: string;
   tags: string[];
   link?: string;
+  inDevelopment?: boolean;
 }
 
 export interface Skill {

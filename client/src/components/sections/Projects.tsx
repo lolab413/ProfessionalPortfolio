@@ -25,7 +25,7 @@ const projects: Project[] = [
     id: 3,
     title: "Exploration Code E-Learning Platform",
     description: " An interactive e-learning platform designed to teach coding and game development through hands-on projects, engaging lessons, and a structured curriculum for learners of all levels.",
-    imageUrl: "/Images/ExCode.png",
+    imageUrl: "/Images/exploration-code-new.png",
     tags: ["Curriculum Development", "Instructional Design", "Project-Based Learning"],
     link: "https://explorationcode.org/",
     inDevelopment: true
@@ -54,12 +54,14 @@ export function Projects() {
                 <Card className="overflow-hidden h-full">
                   <div className="aspect-video relative overflow-hidden">
                     {project.inDevelopment && (
-                      <Badge 
-                        variant="secondary" 
-                        className="absolute top-2 right-2 z-10 bg-primary/90 text-primary-foreground"
-                      >
-                        In Development
-                      </Badge>
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10">
+                        <Badge 
+                          variant="secondary" 
+                          className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 text-lg font-semibold shadow-lg"
+                        >
+                          Beta Coming Soon
+                        </Badge>
+                      </div>
                     )}
                     <img
                       src={project.imageUrl}
