@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileText } from "lucide-react";
+import { WritingSamplesModal } from "@/components/WritingSamplesModal";
 
 export function Hero() {
   return (
@@ -85,20 +86,17 @@ export function Hero() {
             >
               <a href="#contact">Get In Touch</a>
             </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-secondary/80 hover:bg-secondary transition-colors"
-              asChild
-            >
-              <a 
-                href="https://lolababatunde413.journoportfolio.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Writing Samples <FileText className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+            <WritingSamplesModal 
+              trigger={
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-secondary/80 hover:bg-secondary transition-colors"
+                >
+                  Writing Samples <FileText className="ml-2 h-4 w-4" />
+                </Button>
+              }
+            />
           </motion.div>
         </motion.div>
       </div>

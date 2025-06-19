@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Linkedin, Github, FileText, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { Avatoon } from "@/components/Avatoon";
+import { WritingSamplesModal } from "@/components/WritingSamplesModal";
 import { useState, FormEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -124,14 +125,13 @@ export function Contact() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <FileText className="h-5 w-5 text-primary shrink-0" />
-                  <a 
-                    href="https://lolababatunde413.journoportfolio.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm md:text-base hover:text-primary transition-colors"
-                  >
-                    My Writing Samples
-                  </a>
+                  <WritingSamplesModal 
+                    trigger={
+                      <button className="text-sm md:text-base hover:text-primary transition-colors text-left">
+                        My Writing Samples
+                      </button>
+                    }
+                  />
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary shrink-0" />
