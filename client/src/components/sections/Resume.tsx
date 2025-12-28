@@ -16,8 +16,8 @@ const experiences: Experience[] = [
       "Instruct students in full-stack web development, game development, and data science",
       "Teach JavaScript, Lua, C#, React, Vue, Flutter, Python, and SQL",
       "Develop interactive labs covering databases, OOP, and algorithms",
-      "Guide students in front-end and back-end development with Node.js and Express"
-    ]
+      "Guide students in front-end and back-end development with Node.js and Express",
+    ],
   },
   {
     company: "Freedom Learning Group/Coursera",
@@ -26,8 +26,8 @@ const experiences: Experience[] = [
     description: [
       "Created interactive learning modules for data science, AI, and machine learning",
       "Designed hands-on programming exercises in Python and SQL",
-      "Developed technical tutorials using Articulate 360 and Adobe Creative Suite"
-    ]
+      "Developed technical tutorials using Articulate 360 and Adobe Creative Suite",
+    ],
   },
   {
     company: "iCode",
@@ -36,9 +36,9 @@ const experiences: Experience[] = [
     description: [
       "Led instruction in Python, JavaScript, SQL, and database management",
       "Designed curricula covering data structures, algorithms, and debugging",
-      "Developed project-based learning experiences for full-stack applications"
-    ]
-  }
+      "Developed project-based learning experiences for full-stack applications",
+    ],
+  },
 ];
 
 const education: Education[] = [
@@ -46,20 +46,21 @@ const education: Education[] = [
     school: "Texas Woman's University",
     degree: "Bachelor of Business Administration (B.B.A.)",
     period: "August 2011 - May 2015",
-    description: "Enactus Member"
+    description: "Enactus Member",
   },
   {
     school: "Brookhaven College",
     degree: "Certificate in Computer Programming",
     period: "Post-Graduate September 2017",
-    description: "Advanced programming and software development studies"
+    description: "Advanced programming and software development studies",
   },
   {
     school: "Purdue Global",
     degree: "Graduate Certificate in Instructional Design and Technology",
     period: "Post-Graduate",
-    description: "Focused on learning experience design, adult learning theory, and technology-enabled instructional solutions."
-  }
+    description:
+      "Focused on learning experience design, adult learning theory, and technology-enabled instructional solutions.",
+  },
 ];
 
 export function Resume() {
@@ -72,15 +73,15 @@ export function Resume() {
     if (sectionRef.current) {
       setDimensions({
         width: sectionRef.current.offsetWidth,
-        height: sectionRef.current.offsetHeight
+        height: sectionRef.current.offsetHeight,
       });
     }
   }, []);
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Lola_Babatunde_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Lola_Babatunde_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -101,7 +102,11 @@ export function Resume() {
   };
 
   return (
-    <section id="resume" className="py-20 bg-muted/50 relative" ref={sectionRef}>
+    <section
+      id="resume"
+      className="py-20 bg-muted/50 relative"
+      ref={sectionRef}
+    >
       {showConfetti && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <ReactConfetti
@@ -117,20 +122,23 @@ export function Resume() {
               x: dimensions.width / 2,
               y: 0,
               w: 0,
-              h: 0
+              h: 0,
             }}
             colors={[
-              '#ff69b4', // pink
-              '#4b0082', // indigo
-              '#9370db', // medium purple
-              '#ba55d3', // medium orchid
-              '#ff1493', // deep pink
-              '#dda0dd', // plum
+              "#ff69b4", // pink
+              "#4b0082", // indigo
+              "#9370db", // medium purple
+              "#ba55d3", // medium orchid
+              "#ff1493", // deep pink
+              "#dda0dd", // plum
             ]}
-            drawShape={ctx => {
+            drawShape={(ctx) => {
               ctx.beginPath();
-              for(let i = 0; i < 6; i++) {
-                ctx.lineTo(10 * Math.cos(2 * Math.PI * i / 6), 10 * Math.sin(2 * Math.PI * i / 6));
+              for (let i = 0; i < 6; i++) {
+                ctx.lineTo(
+                  10 * Math.cos((2 * Math.PI * i) / 6),
+                  10 * Math.sin((2 * Math.PI * i) / 6),
+                );
               }
               ctx.closePath();
               ctx.fill();
@@ -171,7 +179,9 @@ export function Resume() {
                 {experiences.map((exp, index) => (
                   <div key={index} className="border-l-2 border-primary pl-4">
                     <h3 className="font-semibold">{exp.position}</h3>
-                    <p className="text-sm text-muted-foreground">{exp.company} | {exp.period}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {exp.company} | {exp.period}
+                    </p>
                     <ul className="mt-2 list-disc list-inside text-sm space-y-1">
                       {exp.description.map((item, i) => (
                         <li key={i}>{item}</li>
@@ -190,7 +200,9 @@ export function Resume() {
                 {education.map((edu, index) => (
                   <div key={index} className="border-l-2 border-primary pl-4">
                     <h3 className="font-semibold">{edu.degree}</h3>
-                    <p className="text-sm text-muted-foreground">{edu.school} | {edu.period}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {edu.school} | {edu.period}
+                    </p>
                     <p className="mt-2 text-sm">{edu.description}</p>
                   </div>
                 ))}
