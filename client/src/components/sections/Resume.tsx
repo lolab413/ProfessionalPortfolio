@@ -106,7 +106,6 @@ export function Resume() {
             gravity={0.3}
             initialVelocityY={-15}
             initialVelocityX={8}
-            spread={180}
             confettiSource={{
               x: dimensions.width / 2,
               y: 0,
