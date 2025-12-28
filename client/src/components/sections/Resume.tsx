@@ -51,8 +51,14 @@ const education: Education[] = [
   {
     school: "Brookhaven College",
     degree: "Certificate in Computer Programming",
-    period: "Post-Graduate",
+    period: "Post-Graduate September 2017",
     description: "Advanced programming and software development studies"
+  },
+  {
+    school: "Purdue Global",
+    degree: "Graduate Certificate in Instructional Design and Technology",
+    period: "Post-Graduate",
+    description: "Focused on learning experience design, adult learning theory, and technology-enabled instructional solutions."
   }
 ];
 
@@ -106,6 +112,7 @@ export function Resume() {
             gravity={0.3}
             initialVelocityY={-15}
             initialVelocityX={8}
+            spread={180}
             confettiSource={{
               x: dimensions.width / 2,
               y: 0,
