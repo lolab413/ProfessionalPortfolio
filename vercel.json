@@ -1,0 +1,6 @@
+{
+  "ignoreCommand": "echo Ignoring server folder",
+  "builds": [
+    { "src": "client/**", "use": "@vercel/static-build" }
+  ]
+}
